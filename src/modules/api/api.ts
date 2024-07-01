@@ -7,6 +7,7 @@ import { ResponseType } from "./interfaces";
 const customAxios = axios.create({
   withCredentials: true,
 });
+customAxios.defaults.baseURL = "http://localhost:8081"
 
 const getApiUrl = (api: keyof typeof apiObject) => {
   return "/api" + apiObject[api][1];
@@ -38,6 +39,7 @@ export function REQ<REQ_T = any, RES_T = any>(
   api: keyof typeof apiObject,
   data: REQ_T | null = null
 ): Promise<AxiosResponse<RES_T>> {
+  console.log("REQUESTING " + api + " " + JSON.stringify(data))
   return REQUESTS[apiObject[api][0] as RequestMethod](api, data);
 }
 

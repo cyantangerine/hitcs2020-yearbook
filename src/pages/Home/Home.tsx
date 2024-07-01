@@ -1,3 +1,10 @@
+// Mixin
+import BMapGLR from "@/modules/tianditu-wrapper/BMapGL"
+console.log("检测BMapGL " + typeof window.BMapGL)
+if (!window.BMapGL) {
+  window.BMapGL = BMapGLR
+}
+
 import React, {
   CSSProperties,
   useCallback,
